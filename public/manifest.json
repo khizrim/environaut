@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Environaut",
+  "version": "0.1.0",
+  "description": "See which environment a tab is on and jump the same page to dev, stage or prod in one click.",
+  "minimum_chrome_version": "123",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Environaut",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "service-worker.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "tabs", "scripting", "contextMenus"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Alt+E" },
+      "description": "Open Environaut"
+    },
+    "next-env": {
+      "suggested_key": { "default": "Alt+Shift+Period" },
+      "description": "Jump to the next environment of this project"
+    },
+    "prev-env": {
+      "suggested_key": { "default": "Alt+Shift+Comma" },
+      "description": "Jump to the previous environment of this project"
+    }
+  }
+}

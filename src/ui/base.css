@@ -1,0 +1,159 @@
+/*
+ * Shared tokens for the popup and the settings page. Chrome 123+ is the
+ * minimum supported version (see the manifest), so light-dark() needs no
+ * prefers-color-scheme fallback.
+ */
+:root {
+  color-scheme: light dark;
+
+  --bg: light-dark(#ffffff, #0d1117);
+  --surface: light-dark(#f6f7f9, #161b22);
+  --surface-raised: light-dark(#ffffff, #1c2128);
+  --surface-hover: light-dark(#eef0f3, #21262d);
+  --border: light-dark(#e2e5ea, #30363d);
+  --border-strong: light-dark(#c9cfd7, #3d444d);
+  --text: light-dark(#161b22, #e6edf3);
+  --text-muted: light-dark(#5b6673, #9198a1);
+  --accent: light-dark(#0b60c9, #58a6ff);
+  --accent-contrast: light-dark(#ffffff, #0d1117);
+  --danger: light-dark(#b3261e, #ff7b72);
+
+  --radius: 8px;
+  --radius-sm: 6px;
+  --ring: 2px solid var(--accent);
+
+  accent-color: var(--accent);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+:where(button, input, select, textarea, a):focus-visible {
+  outline: var(--ring);
+  outline-offset: 2px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--text);
+  transition: background-color 120ms ease;
+}
+
+.btn:hover {
+  background: var(--surface-hover);
+}
+
+.btn-primary {
+  border-color: transparent;
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.btn-primary:hover {
+  background: light-dark(#0a55b0, #79b8ff);
+}
+
+.btn-danger {
+  color: var(--danger);
+}
+
+.btn-quiet {
+  border-color: transparent;
+  background: transparent;
+}
+
+.btn-quiet:hover {
+  background: var(--surface-hover);
+}
+
+input[type='text'],
+input[type='url'],
+select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--text);
+  font: inherit;
+}
+
+input:user-invalid {
+  border-color: var(--danger);
+}
+
+.field {
+  display: grid;
+  gap: 4px;
+}
+
+.field > label {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 16px;
+  padding: 1px 4px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 11px;
+  text-align: center;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
