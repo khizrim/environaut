@@ -1,0 +1,31 @@
+{
+  "name": "environaut",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome extension that shows which environment a tab is on and jumps the same page between dev, stage and prod.",
+  "type": "module",
+  "scripts": {
+    "icons": "node scripts/make-icons.mjs",
+    "build": "npm run icons && npm run typecheck && npm test && vite build && vite build --config vite.config.content.ts",
+    "dev": "npm run icons && vite build --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.test.json && tsc --noEmit -p tsconfig.node.json",
+    "zip": "npm run build && cd dist && zip -r ../environaut.zip . -x '*.map'",
+    "test": "node scripts/run-tests.mjs",
+    "smoke": "npm run build && node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.287",
+    "@types/node": "^22.15.29",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "@vitejs/plugin-react": "4.6.0",
+    "esbuild": "^0.25.5",
+    "sharp": "0.34.2",
+    "typescript": "5.8.3",
+    "vite": "6.3.5"
+  }
+}
